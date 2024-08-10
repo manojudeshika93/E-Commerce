@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import "react-native-reanimated";
 
+import { ToastHost } from "@/components";
 import { Color, tw } from "@/config";
 
 
@@ -41,7 +42,8 @@ export default function RootLayout() {
   return (
     <GestureHandlerRootView style={tw`flex-1`}>
       <ThemeProvider value={theme}>
-        <Stack>
+        <ToastHost />
+        <Stack screenOptions={{ headerBackTitleVisible: false, headerTintColor: Color.primary[500] }}>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="+not-found" />
         </Stack>

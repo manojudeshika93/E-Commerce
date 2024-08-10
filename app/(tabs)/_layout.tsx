@@ -22,11 +22,11 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="products"
+        name="productsTab"
         options={{
           title: 'Products',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'cart' : 'cart-outline'} color={color} />
+            <TabBarIcon name={focused ? 'bag-add' : 'bag-add-outline'} color={color} />
           ),
         }}
       />
