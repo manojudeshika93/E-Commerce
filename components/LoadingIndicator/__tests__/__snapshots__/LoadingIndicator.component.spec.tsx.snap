@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoadingIndicator Component should render correctly should render correctly with [object Object] 1`] = `
+<ActivityIndicator
+  animating={true}
+  color="#C30145"
+  size="small"
+/>
+`;
+
+exports[`LoadingIndicator Component should render correctly should render correctly with [object Object] 2`] = `
+<ActivityIndicator
+  animating={true}
+  color="#F3F3F3"
+  size="large"
+/>
+`;
+
+exports[`LoadingIndicator Component should render correctly should render correctly with [object Object] 3`] = `
+<ActivityIndicator
+  animating={true}
+  color="#000000"
+  size="large"
+/>
+`;
