@@ -1,0 +1,35 @@
+{
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features",
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "git.autofetch": true,
+  "git.confirmSync": true,
+  "editor.formatOnSave": true,
+  "tailwindCSS.classAttributes": ["style"],
+  "tailwindCSS.experimental.classRegex": ["tw`([^`]*)", ["tw.style\\(([^)]*)\\)", "'([^']*)'"]],
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit"
+  }
+}

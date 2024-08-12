@@ -1,0 +1,107 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Switch Component should render the Switch component correctly 1`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+      "backgroundColor": "#FFFFFF",
+      "borderRadius": 9999,
+      "flexDirection": "row",
+      "gap": 8,
+      "justifyContent": "center",
+      "paddingBottom": 8,
+      "paddingLeft": 8,
+      "paddingRight": 8,
+      "paddingTop": 8,
+    }
+  }
+>
+  <Text
+    style={
+      {
+        "color": "#404040",
+        "fontFamily": "Inter_600SemiBold",
+        "fontSize": 16,
+        "lineHeight": 24,
+      }
+    }
+  >
+    EN
+  </Text>
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": false,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "backgroundColor": "rgba(160, 160, 160, 1)",
+        "borderRadius": 22,
+        "height": 27,
+        "width": 52,
+      }
+    }
+    testID="switch"
+  >
+    <View
+      collapsable={false}
+      style={
+        {
+          "alignItems": "center",
+          "flex": 1,
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "left": -13.75,
+          "marginLeft": 2,
+          "marginRight": 2,
+          "width": 52,
+        }
+      }
+    >
+      <View
+        collapsable={false}
+        style={
+          {
+            "alignItems": "center",
+            "backgroundColor": "rgba(195, 1, 69, 1)",
+            "borderColor": "rgba(80, 80, 80, 1)",
+            "borderRadius": 11,
+            "borderWidth": 0,
+            "height": 22,
+            "justifyContent": "center",
+            "width": 22,
+          }
+        }
+      />
+    </View>
+  </View>
+  <Text
+    style={
+      {
+        "color": "#404040",
+        "fontFamily": "Inter_600SemiBold",
+        "fontSize": 16,
+        "lineHeight": 24,
+      }
+    }
+  >
+    AR
+  </Text>
+</View>
+`;
