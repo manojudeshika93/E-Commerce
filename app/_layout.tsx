@@ -1,16 +1,18 @@
-import { DefaultTheme, Theme, ThemeProvider } from "@react-navigation/native";
-import { useFonts } from "expo-font";
-import { Stack } from "expo-router";
-import * as SplashScreen from "expo-splash-screen";
-import { useEffect } from "react";
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { useFonts } from 'expo-font';
+import { Stack } from 'expo-router';
+import * as SplashScreen from 'expo-splash-screen';
+import 'intl-pluralrules';
+import { useEffect } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import "react-native-reanimated";
+import 'react-native-reanimated';
 
-import { ToastHost } from "@/components";
-import { Color, tw } from "@/config";
-
+import { ToastHost } from '@/components';
+import { Color, tw } from '@/config';
 
 SplashScreen.preventAutoHideAsync();
+
+const queryClient = new QueryClient();
 
 export default function RootLayout() {
   let [fontsLoaded] = useFonts({
@@ -19,15 +21,6 @@ export default function RootLayout() {
     Inter_600SemiBold: require('../assets/fonts/Inter-SemiBold.ttf'),
     Inter_700Bold: require('../assets/fonts/Inter-Bold.ttf'),
   });
-
-  const theme: Theme = {
-    dark: false,
-    colors: {
-      ...DefaultTheme.colors,
-      background: Color.custom.white,
-      border: Color.secondary[100],
-    },
-  };
 
   useEffect(() => {
     if (fontsLoaded) {
@@ -41,13 +34,13 @@ export default function RootLayout() {
 
   return (
     <GestureHandlerRootView style={tw`flex-1`}>
-      <ThemeProvider value={theme}>
+      <QueryClientProvider client={queryClient}>
         <ToastHost />
         <Stack screenOptions={{ headerBackTitleVisible: false, headerTintColor: Color.primary[500] }}>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="+not-found" />
         </Stack>
-      </ThemeProvider>
+      </QueryClientProvider>
     </GestureHandlerRootView>
   );
 }

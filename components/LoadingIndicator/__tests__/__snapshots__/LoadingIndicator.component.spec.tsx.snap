@@ -1,25 +1,58 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`LoadingIndicator Component should render correctly should render correctly with [object Object] 1`] = `
-<ActivityIndicator
-  animating={true}
-  color="#C30145"
-  size="small"
-/>
+<View
+  style={
+    {
+      "alignItems": "center",
+      "height": "100%",
+      "justifyContent": "center",
+      "width": "100%",
+    }
+  }
+>
+  <ActivityIndicator
+    animating={true}
+    color="#C30145"
+    size="small"
+  />
+</View>
 `;
 
 exports[`LoadingIndicator Component should render correctly should render correctly with [object Object] 2`] = `
-<ActivityIndicator
-  animating={true}
-  color="#F3F3F3"
-  size="large"
-/>
+<View
+  style={
+    {
+      "alignItems": "center",
+      "height": "100%",
+      "justifyContent": "center",
+      "width": "100%",
+    }
+  }
+>
+  <ActivityIndicator
+    animating={true}
+    color="#F3F3F3"
+    size="large"
+  />
+</View>
 `;
 
 exports[`LoadingIndicator Component should render correctly should render correctly with [object Object] 3`] = `
-<ActivityIndicator
-  animating={true}
-  color="#000000"
-  size="large"
-/>
+<View
+  style={
+    {
+      "alignItems": "center",
+      "height": "100%",
+      "justifyContent": "center",
+      "width": "100%",
+    }
+  }
+>
+  <ActivityIndicator
+    animating={true}
+    color="#000000"
+    size="large"
+  />
+</View>
 `;

@@ -31,6 +31,9 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "baseUrl": "https://storage.googleapis.com/mumzrn"
     }
   }
 }

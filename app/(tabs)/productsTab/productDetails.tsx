@@ -1,27 +1,43 @@
 import { Image } from 'expo-image';
 import { Stack } from 'expo-router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Pressable, ScrollView, Text, View } from 'react-native';
 import Swiper from 'react-native-swiper';
 
-import { Button, Switch } from '@/components';
+import { Button, LoadingIndicator, Switch } from '@/components';
 import { Color, tw } from '@/config';
 import { productDetails, SCREEN_WIDTH } from '@/constants';
+import { useProductDetails } from '@/hooks';
 import { ToastService } from '@/services';
 
 export default function ProductDetailScreen() {
   const [count, setCount] = useState(1);
   const [value, setValue] = useState(false);
-  const details = productDetails[0];
+  const details = value ? productDetails[0] : productDetails[1];
+
+  const { t, i18n } = useTranslation();
+
+  useEffect(() => {
+    if (value) {
+      i18n.changeLanguage('ar');
+    } else {
+      i18n.changeLanguage('en');
+    }
+  }, [value]);
+
+  const { data, isLoading } = useProductDetails();
+  console.log('productDetails', data);
+
 
   const handleAddCart = () => {
     setCount(1);
-    ToastService.success({ message: 'Added into the cart' });
+    ToastService.success({ message: t('addCartAlert') });
   };
 
   const onCountDecrement = () => {
     if (count < 2) {
-      ToastService.warning({ message: 'Unable to reduce the item count' });
+      ToastService.warning({ message: t('countWarn') });
     } else {
       setCount(count - 1);
     }
@@ -32,7 +48,9 @@ export default function ProductDetailScreen() {
   }
 
   return (
-    <View style={tw`flex-1`}>
+    <>{isLoading ? (
+      <LoadingIndicator />
+    ) : (<View style={tw`flex-1`}>
       <Stack.Screen options={{ title: details.name }} />
       <View style={tw`absolute z-100 right-0`}>
         <Switch value={value} onValueChange={() => setValue(!value)} />
@@ -46,32 +64,32 @@ export default function ProductDetailScreen() {
       </View>
       <ScrollView style={tw`mx-5`} showsVerticalScrollIndicator={false}>
         <View style={tw`my-5`}>
-          <Text style={tw`text-h3-semibold`}>Brand</Text>
+          <Text style={tw`text-h3-semibold`}>{t('brand')}</Text>
           <View style={tw`items-center justify-center`}>
             <Image source={{ uri: details.brand_info.img_src }} style={tw`w-20 h-20`} contentFit='contain' />
             <Text style={tw`text-b1-medium`}>{details.brand_info.title}</Text>
           </View>
         </View>
         <View style={tw`mb-5 gap-2`}>
-          <Text style={tw`text-h3-semibold`}>Title</Text>
+          <Text style={tw`text-h3-semibold`}>{t('title')}</Text>
           <View style={tw`items-center justify-center`}>
             <Text style={tw`text-b1-medium`}>{details.meta_title}</Text>
           </View>
         </View>
         <View style={tw`mb-5 gap-2`}>
-          <Text style={tw`text-h3-semibold`}>Description</Text>
+          <Text style={tw`text-h3-semibold`}>{t('description')}</Text>
           <View style={tw`items-center justify-center`}>
             <Text style={tw`text-b1-medium`}>{details.meta_description}</Text>
           </View>
         </View>
         <View style={tw`mb-5 gap-2`}>
-          <Text style={tw`text-h3-semibold`}>Package Dimensions</Text>
+          <Text style={tw`text-h3-semibold`}>{t('pkgDimensions')}</Text>
           <View style={tw`items-center justify-center`}>
             <Text style={tw`text-b1-medium`}>{details.pkgdimensions}</Text>
           </View>
         </View>
         <View style={tw`mb-5 gap-2`}>
-          <Text style={tw`text-h3-semibold`}>Price</Text>
+          <Text style={tw`text-h3-semibold`}>{t('price')}</Text>
           <View style={tw`flex-row items-center justify-center gap-2`}>
             <Text style={tw`text-b1-medium`}>{details.price.regularPrice.amount.currency}</Text>
             <Text style={tw`text-b1-medium`}>{details.price.regularPrice.amount.value.toFixed(2)}</Text>
@@ -82,13 +100,13 @@ export default function ProductDetailScreen() {
           </View>
         </View>
         <View style={tw`mb-5 gap-2`}>
-          <Text style={tw`text-h3-semibold`}>Rating</Text>
+          <Text style={tw`text-h3-semibold`}>{t('rating')}</Text>
           <View style={tw`items-center justify-center`}>
             <Text style={tw`text-b1-medium`}>{details.rating_summary}</Text>
           </View>
         </View>
         <View style={tw`mb-5 gap-2`}>
-          <Text style={tw`text-h3-semibold`}>Usage</Text>
+          <Text style={tw`text-h3-semibold`}>{t('usage')}</Text>
           <View style={tw`items-center justify-center`}>
             <Text style={tw`text-b1-medium`}>{details.recom_age}</Text>
           </View>
@@ -105,9 +123,11 @@ export default function ProductDetailScreen() {
           </Pressable>
         </View>
         <View style={tw`flex-2`}>
-          <Button title='Add to cart' disabled={details.stock_status !== 'IN_STOCK'} onPress={handleAddCart} />
+          <Button title={t('addCart')} disabled={details.stock_status !== 'IN_STOCK'} onPress={handleAddCart} />
         </View>
       </View>
-    </View>
+    </View>)}
+    </>
+
   );
 }

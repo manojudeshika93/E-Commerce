@@ -1,7 +1,7 @@
 import React from 'react';
-import { ActivityIndicator as RNLoadingIndicator } from 'react-native';
+import { ActivityIndicator as RNLoadingIndicator, View } from 'react-native';
 
-import { Color } from '@/config';
+import { Color, tw } from '@/config';
 
 export interface LoadingIndicatorProps {
   color?: string;
@@ -9,5 +9,5 @@ export interface LoadingIndicatorProps {
 }
 
 export function LoadingIndicator({ color = Color.primary[500], size = 'large' }: LoadingIndicatorProps) {
-  return <RNLoadingIndicator color={color} size={size} animating={true} />;
+  return <View style={tw`w-full h-full items-center justify-center`}><RNLoadingIndicator color={color} size={size} animating={true} /></View>;
 }
