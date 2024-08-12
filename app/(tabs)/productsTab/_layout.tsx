@@ -3,7 +3,7 @@ import { Stack } from "expo-router";
 
 export default function ProductsStack() {
   return (
-    <Stack screenOptions={{ headerTintColor: Color.primary[500], headerBackTitleVisible: false, headerTitle: '' }}>
+    <Stack screenOptions={{ headerTintColor: Color.primary[500], headerBackTitleVisible: false }}>
       <Stack.Screen name="products" options={{ headerShown: false }} />
       <Stack.Screen name="productDetails" />
     </Stack>

@@ -9,24 +9,28 @@ import { tw } from '@/config';
 import { BLUR_HASH, productList } from '@/constants';
 import { groupByCategory } from '@/utils';
 
+interface ItemProps {
+  imageUrl: string,
+  onPress: () => void,
+}
+
+const Item = memo(({ imageUrl, onPress }: ItemProps) => (
+  <Pressable
+    style={tw`w-20 h-20 p-3 ml-3 items-center justify-center bg-secondary-200 rounded-full border border-primary-500`}
+    onPress={onPress}>
+    <Image
+      style={tw`w-12 h-12`}
+      source={imageUrl}
+      placeholder={{ blurhash: BLUR_HASH }}
+      transition={1000}
+    />
+  </Pressable>
+));
+
 export default function ProductsScreen() {
   const router = useRouter();
 
   const groupedProducts = useMemo(() => groupByCategory(productList), [productList]);
-
-
-  const Item = memo(({ imageUrl }: { imageUrl: string }) => (
-    <Pressable
-      style={tw`w-20 h-20 p-3 ml-3 items-center justify-center bg-secondary-200 rounded-full border border-primary-500`}
-      onPress={() => router.navigate('/(tabs)/productsTab/productDetails')}>
-      <Image
-        style={tw`w-12 h-12`}
-        source={imageUrl}
-        placeholder={{ blurhash: BLUR_HASH }}
-        transition={1000}
-      />
-    </Pressable>
-  ));
 
   return (
     <SafeAreaView style={tw`flex-1 items-center`}>
@@ -39,7 +43,7 @@ export default function ProductsScreen() {
           <FlatList
             horizontal
             data={item}
-            renderItem={({ item }) => <Item imageUrl={item.small_image.url} />}
+            renderItem={({ item }) => <Item imageUrl={item.small_image.url} onPress={() => router.navigate('/(tabs)/productsTab/productDetails')} />}
             keyExtractor={(item, index) => item.uid + index}
             showsHorizontalScrollIndicator={false}
           />

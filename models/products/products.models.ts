@@ -36,7 +36,7 @@ interface BrandInfo {
   interface ProductPrice {
     discount?: ProductDiscount;
     final_price: Money;
-    regular_price: Money;
+    regular_price?: Money;
     __typename: string;
   }
 
@@ -197,7 +197,7 @@ interface BrandInfo {
     reviews: ProductReviews;
     shipping_weight?: number | null;
     sku: string;
-    small_image: ProductDetailImage;
+    small_image: ProductImage;
     stock_status: string;
     uid: string;
     url_key: string;
